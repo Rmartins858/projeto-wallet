@@ -20,5 +20,4 @@ export const fetcAPI = () => async (dispatch) => {
   const response = await api.json();
   dispatch(isCurrencies(Object.keys(response)
     .filter((res) => res !== 'USDT')));
-  console.log(response);
 };
