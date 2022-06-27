@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 
-import { SET_CURRENCIES, SET_EXPENSES } from '../actions';
+import { SET_CURRENCIES, SET_EXPENSES, EXCLUDE_EXPENSES } from '../actions';
 
 const INITTIAL_STATE = {
   currencies: [],
@@ -18,6 +18,12 @@ const walletReducer = (state = INITTIAL_STATE, action) => {
       ...state,
       expenses: [...state.expenses, { ...action.expenses },
       ],
+    });
+  case EXCLUDE_EXPENSES:
+    return ({
+      ...state,
+      expenses: state.expenses.filter(({ id }) => action.id !== id) // Requisito 9 realizado com a ajuda Jessy Damasceno. Turma 21 - Tribo A.
+      ,
     });
   default:
     return state;

@@ -5,6 +5,7 @@ const API_URL = 'https://economia.awesomeapi.com.br/json/all';
 export const SET_EMAIL = 'SET_EMAIL';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SET_EXPENSES = 'SET_EXPENSES';
+export const EXCLUDE_EXPENSES = 'EXCLUDE_EXPENSES';
 
 export const creatAtionEmail = (email) => ({
   type: SET_EMAIL,
@@ -19,6 +20,11 @@ export const isCurrencies = (currencies) => ({
 export const isExpenses = (expenses) => ({
   type: SET_EXPENSES,
   expenses,
+});
+
+export const isExclusion = (id) => ({
+  type: EXCLUDE_EXPENSES,
+  id,
 });
 
 export const fetcAPI = () => async (dispatch) => {
