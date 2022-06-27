@@ -32,7 +32,6 @@ class Form extends React.Component {
     render() {
       const { value, description, currency, method, tag } = this.state;
       const { currencies } = this.props;
-
       return (
         <form>
           <div>
