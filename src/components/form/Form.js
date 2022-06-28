@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchAPIglobal } from '../../actions';
+import { fetchAPIglobal, updateExpense } from '../../actions';
 
 // const alimentacao = 'Alimentação';
 const INITIAL_STATE = {
@@ -23,15 +23,19 @@ class Form extends React.Component {
     }
 
     handleClick = () => {
-      console.log(this.props);
-      const { fetchAPIgl } = this.props;
-      fetchAPIgl(this.state);
-      this.setState(({ id }) => ({ ...INITIAL_STATE, id: id + 1 }));
+      const { fetchAPIgl, editor, exchangeRates, isUpdateExpense } = this.props;
+      if (!editor) {
+        fetchAPIgl(this.state);
+        this.setState(({ id }) => ({ ...INITIAL_STATE, id: id + 1 }));
+      } else {
+        const { idToEdit: id } = this.props;
+        isUpdateExpense({ ...this.state, id, exchangeRates });
+      }
     }
 
     render() {
       const { value, description, currency, method, tag } = this.state;
-      const { currencies } = this.props;
+      const { currencies, editor } = this.props;
       return (
         <form>
           <div>
@@ -110,7 +114,7 @@ class Form extends React.Component {
             onClick={ this.handleClick }
             type="button"
           >
-            Adicionar despesa
+            { editor ? 'Editar despesa' : 'Adicionar despesa'}
           </button>
         </form>
       );
@@ -120,14 +124,22 @@ class Form extends React.Component {
 Form.propTypes = {
   fetchAPIgl: Proptypes.func.isRequired,
   currencies: Proptypes.arrayOf(Proptypes.string).isRequired,
+  editor: Proptypes.bool.isRequired,
+  idToEdit: Proptypes.number.isRequired,
+  exchangeRates: Proptypes.objectOf().isRequired,
+  isUpdateExpense: Proptypes.func.isRequired,
 };
 
 const mapStateToProps = ({ wallet }) => ({
   currencies: wallet.currencies,
+  editor: wallet.editor,
+  idToEdit: wallet.idToEdit,
+  exchangeRates: wallet.exchangeRates,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAPIgl: (payload) => dispatch(fetchAPIglobal(payload)),
+  isUpdateExpense: (params) => dispatch(updateExpense(params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

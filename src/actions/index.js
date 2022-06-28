@@ -6,6 +6,8 @@ export const SET_EMAIL = 'SET_EMAIL';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SET_EXPENSES = 'SET_EXPENSES';
 export const EXCLUDE_EXPENSES = 'EXCLUDE_EXPENSES';
+export const START_EDITING = 'START_EDITING';
+export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
 
 export const creatAtionEmail = (email) => ({
   type: SET_EMAIL,
@@ -25,6 +27,17 @@ export const isExpenses = (expenses) => ({
 export const isExclusion = (id) => ({
   type: EXCLUDE_EXPENSES,
   id,
+});
+
+export const editExpense = (id, exchangeRates) => ({
+  type: START_EDITING,
+  id,
+  exchangeRates,
+});
+
+export const updateExpense = (expenses) => ({
+  type: UPDATE_EXPENSE,
+  expenses,
 });
 
 export const fetcAPI = () => async (dispatch) => {

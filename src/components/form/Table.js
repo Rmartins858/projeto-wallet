@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { isExclusion } from '../../actions';
+import { isExclusion, editExpense } from '../../actions';
 
 class Table extends React.Component {
   render() {
-    const { expenses, remove } = this.props;
-    console.log(expenses);
+    const { expenses, remove, editForm } = this.props;
     return (
       <table>
         <thead>
@@ -33,6 +32,7 @@ class Table extends React.Component {
               exchangeRates,
               currency,
             }) => {
+              console.log(description);
               const valueFix = (+value).toFixed(2);
               const { name } = exchangeRates[currency];
               const { ask } = exchangeRates[currency];
@@ -42,22 +42,27 @@ class Table extends React.Component {
                 <tr key={ id }>
                   <td>{description}</td>
                   <td>{tag}</td>
-                  <td>{name}</td>
                   <td>{method}</td>
+                  <td>{name}</td>
                   <td>{valueFix}</td>
                   <td>{fixAsk}</td>
                   <td>{ValueInReais}</td>
                   <td>Real</td>
                   <td>
-                    {' '}
+
+                    <button
+                      data-testid="edit-btn"
+                      type="button"
+                      onClick={ () => editForm(id, exchangeRates) }
+                    >
+                      Editar
+                    </button>
                     <button
                       type="button"
                       data-testid="delete-btn"
                       onClick={ () => remove(id) }
                     >
-                      {' '}
                       Excluir
-                      {' '}
                     </button>
                   </td>
                 </tr>
@@ -73,14 +78,17 @@ class Table extends React.Component {
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
   remove: PropTypes.func.isRequired,
+  editForm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ wallet }) => ({
   expenses: wallet.expenses,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
   remove: (id) => dispatch(isExclusion(id)),
+  editForm: (id, exchangeRates) => dispatch(editExpense(id, exchangeRates)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
