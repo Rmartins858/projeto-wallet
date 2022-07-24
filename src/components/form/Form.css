@@ -1,0 +1,134 @@
+ .container-form{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+ }
+ 
+ .form__group {
+    display: flex;
+    position: relative;
+    padding: 15px 0 0;
+    justify-content: space-around;
+    align-items:center;
+    width: 80%;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+   
+ }
+
+ .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  
+ }
+ .box select {
+    background-color: #0563af;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
+
+  .container-option{
+    color: white;
+  }
+
+.btn{
+    position: relative;
+    color:white;
+    font-size: 24px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    margin-right: 50px;
+    z-index: 1;
+  }
+
+  .btn::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background:#00ded2 ;
+    border-radius: 10px;
+    z-index: -1;
+    transition: 0.3s ease;
+  }
+
+  .btn:hover::after{
+    width: 100%;
+  }
+
+
+  .select{
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+select {
+  width:130px;
+  height:30px;
+  font-family:Verdana, Trebuchet,sans-serif;
+  font-size:14px;
+  padding:5px;
+  background: rgba(255, 255, 255, 0.2);;
+  display: flex;
+  }
+  
+  option {
+  width:130px;
+  height:30px;
+  font-family:Verdana, Trebuchet,sans-serif;
+  font-size:14px;
+  padding:5px;
+  background-color:#1b1c33;
+  border-radius: 8px;
+  }

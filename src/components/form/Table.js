@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { isExclusion, editExpense } from '../../actions';
+import './Table.css';
 
 class Table extends React.Component {
   render() {
     const { expenses, remove, editForm } = this.props;
     return (
-      <table>
+      <table className="dataTable">
         <thead>
           <tr>
             <th>Descrição</th>

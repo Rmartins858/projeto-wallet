@@ -1,4 +1,5 @@
 import React from 'react';
+import './Form.css';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchAPIglobal, updateExpense } from '../../actions';
@@ -37,10 +38,11 @@ class Form extends React.Component {
       const { value, description, currency, method, tag } = this.state;
       const { currencies, editor } = this.props;
       return (
-        <form>
+        <form className="form__group field">
           <div>
             <label htmlFor="text">
               <input
+                className="form__field"
                 type="text"
                 name="value"
                 data-testid="value-input"
@@ -53,6 +55,7 @@ class Form extends React.Component {
           <div>
             <label htmlFor="description">
               <input
+                className="form__field"
                 id="description"
                 data-testid="description-input"
                 placeholder="Despesas"
@@ -62,7 +65,8 @@ class Form extends React.Component {
               />
             </label>
           </div>
-          <div>
+
+          <div className="select">
             <label htmlFor="currency">
               Moeda:
               <select
@@ -77,8 +81,9 @@ class Form extends React.Component {
             </label>
           </div>
 
-          <div>
+          <div className="select">
             <label htmlFor="method">
+              Metodo de pagamento:
               <select
                 id="method"
                 onChange={ this.handleChange }
@@ -92,7 +97,7 @@ class Form extends React.Component {
               </select>
             </label>
           </div>
-          <div>
+          <div className="select">
             <label htmlFor="tag">
               TAG:
               <select
@@ -110,7 +115,9 @@ class Form extends React.Component {
               </select>
             </label>
           </div>
+
           <button
+            className="btn from-right"
             onClick={ this.handleClick }
             type="button"
           >

@@ -6,6 +6,7 @@ import Header from '../components/header/Header';
 import { fetcAPI } from '../actions';
 import Form from '../components/form/Form';
 import Table from '../components/form/Table';
+import './Wallet.css';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -15,8 +16,10 @@ class Wallet extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form />
+      <div className="wallet">
+        <div className="container-form">
+          <Form />
+        </div>
         <Header />
         <Table />
       </div>

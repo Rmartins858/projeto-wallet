@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { creatAtionEmail } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   state = {
@@ -47,35 +48,40 @@ class Login extends React.Component {
   render() {
     const { email, password, isButton } = this.state;
     return (
-      <div>
+      <div className="container">
+        <h2> Login Wallet </h2>
         <form>
-          <input
-            type="email"
-            data-testid="email-input"
-            onChange={ this.handleChange }
-            value={ email }
-            name="email"
-            placeholder="Email"
-          />
+          <div className="user-box">
+            <input
+              type="email"
+              data-testid="email-input"
+              onChange={ this.handleChange }
+              value={ email }
+              name="email"
+              placeholder="Email"
+            />
+          </div>
 
-          <input
-            type="password"
-            data-testid="password-input"
-            onChange={ this.handleChange }
-            value={ password }
-            name="password"
-            placeholder="Senha"
+          <div className="user-box">
+            <input
+              type="password"
+              data-testid="password-input"
+              onChange={ this.handleChange }
+              value={ password }
+              name="password"
+              placeholder="Senha"
 
-          />
+            />
+          </div>
 
           <button
+            className="button"
             type="button"
             onClick={ this.handleClick }
             disabled={ isButton }
           >
-            {' '}
-            Entrar
-            {' '}
+            <span> Entar </span>
+
           </button>
         </form>
       </div>
